@@ -33,6 +33,6 @@ spec:
       tls:
       - hosts:
         - keycloak.staging.labelwarehouse.sheepieslab.com
-    extraEnv: |
-      - name: PROXY_ADDRESS_FORWARDING
-        value: "true"
+    # extraEnv: |
+    #   - name: PROXY_ADDRESS_FORWARDING
+    #     value: "true"
