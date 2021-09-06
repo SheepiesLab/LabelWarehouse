@@ -5,7 +5,7 @@ resources:
   - namespace.yaml
   - nginx
   - cert-manager
-  # - cert-manager-settings
+  - cert-manager-settings
   - external-dns
   - auth
   - mongodb
