@@ -1,0 +1,35 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+    name: postgres
+spec:
+    releaseName: postgres
+    chart:
+        spec:
+            chart: postgresql
+            sourceRef:
+                kind: HelmRepository
+                name: bitnami
+                namespace: flux-system
+            version: 10.9.4
+    interval: 1h0m0s
+    install:
+        remediation:
+            retries: 10
+    # see https://github.com/bitnami/charts/blob/master/bitnami/postgresql/values.yaml
+    values:
+        fullnameOverride: postgres
+        postgresqlDataDir: /labelwarehouse/postgresql/data
+        postgresqlDatabase: keycloak
+        existingSecret: postgresql-password
+        persistence:
+            enabled: true
+            mountPath: /labelwarehouse/postgresql
+            accessModes:
+                - ReadWriteOnce
+            size: 8Gi
+            storageClass: do-block-storage
+        resources:
+            requests:
+                memory: 128Mi
+                cpu: 100m

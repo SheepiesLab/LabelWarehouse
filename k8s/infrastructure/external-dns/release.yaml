@@ -1,0 +1,64 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+    name: external-dns
+spec:
+    releaseName: external-dns
+    chart:
+        spec:
+            chart: external-dns
+            sourceRef:
+                kind: HelmRepository
+                name: bitnami
+                namespace: flux-system
+            version: 5.4.4
+    interval: 1h0m0s
+    install:
+        remediation:
+            retries: 10
+    # see https://github.com/bitnami/charts/blob/master/bitnami/external-dns/values.yaml
+    values:
+        sources:
+            - service
+            - ingress
+        domainFilters:
+            - sheepieslab.com
+        provider: aws
+        policy: upsert-only
+        registry: txt
+        txtOwnerId: k8s-labelwarehouse-external-dns
+        aws:
+            region: us-east-1
+            zoneType: public
+            credentials:
+                accessKey: AKIAV3MAKUGDZFRKLOYH
+                secretKey: ENC[AES256_GCM,data:m1bCclG/Ehtv1+pnPyDEjIuhVgeAWa4BqKgIb7V1B0dFXxzXQm+H6g==,iv:2uGtHK4v7PRscuCYE/p1yEZU3BCfkKiqqh0kX0Dntow=,tag:WnROMXTusc3VoIOcFPN6MQ==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2021-09-06T07:00:51Z"
+    mac: ENC[AES256_GCM,data:LrxBl6e37mif/K7gfNM10crs5cSMVBp+/Hfmu8mAS6SwQn3B/6bUTpVoDE29ws1aexPS74dV2ZQbwt/ZmkgAJ1nCFmsYMJcqgb7zHGxIbUDkaB429kUvxhhrs9mXDx1JGhXNOLn7pw2bL+m50MhgVQcYGnCkLSZhfh8PVStx6sM=,iv:yWvNsgWIYz6vVSO82NOHpzEP0ooXrizMKiqELSM3+EU=,tag:Pe0wnByolfIdjHrc8K1X5w==,type:str]
+    pgp:
+        - created_at: "2021-09-06T07:00:48Z"
+          enc: |
+            -----BEGIN PGP MESSAGE-----
+
+            hQGMA8B53HsG2KjLAQwAoDfc1YSQhQfgL4df+QBIy7JaV9uDTMURtT8HTl/9c2/m
+            2PIiELKLxuf2PLgUKgSLjH6kSWMDl9OIxVmHnwjXVsvUUHS1PnKd92hnpAx8dqKn
+            +Tm20sq9VBWrzwFvTUomcHVidmU6a/j1bxJ2UXt+2XuHn4HN5VXgbc8Q4RXwwIp4
+            g+/Z9Q7AEteOEK0Y949ACWC+nseKSNEHfv3lrAz2aIOv02ZlCUtlSXXKPzNcDipB
+            IetSwkRrPBwp3lvrUJXk0/Kp2bHTp3DamLnFovMwaevvoFtqr+FKFabnShyvTKp3
+            LvpchcYLS1hTXMcb8GMAH/owUap19oHy5IjLloZblNFS+Fr/49Llx4oivVAVHhYp
+            pBlI8BS+yW+2DoYh7LJz0SA3Yw8J4R01f0xMqA3hDzB57jXn8VtcTlK+LftBGLaY
+            KUpN5wuxulBT4WCVRs739tNXAuev9LbryMhTGzktkdXx2kmAaDh296/xCqkHGwmQ
+            u/Isy6Z7WJhs/E+yZObm1GgBCQIVgP4dWSST+RNsckuIFNrrIT7VZAc8XWi4UBH+
+            9bRjyI7AuyUa5NoOR7aMtCpoo26YiOJgiwIqXjNQM2xZx1mE2nLScVOrY2ZMLtc2
+            dK9BtZH794cAWT/ZQk2ascD4cWrm3mBQjQ==
+            =QztD
+            -----END PGP MESSAGE-----
+          fp: 22E48EE28F14874A41A66750C7EF1B6052387A98
+    encrypted_regex: ^(data|secretKey)$
+    version: 3.7.1

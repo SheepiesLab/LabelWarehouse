@@ -1,0 +1,45 @@
+# see https://docs.cert-manager.io/en/release-0.11/reference/certificates.html
+# and https://cert-manager.io/docs/usage/certificate/
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: labelwarehouse-staging
+spec:
+  # secretName stores the certificate secret
+  secretName: labelwarehouse-staging
+
+  # add all subdomains here to put it in a single cert.
+  # a single * matches aaa, but not aaa.bbb
+  dnsNames:
+  - "*.staging.labelwarehouse.sheepieslab.com"
+  privateKey:
+    rotationPolicy: Always
+  issuerRef:
+    kind: ClusterIssuer
+    name: letsencrypt
+
+---
+
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt
+spec:
+  acme:
+    email: benng@sheepieslab.com
+    server: https://acme-v02.api.letsencrypt.org/directory
+    # secret to communicate with letsencrypt
+    privateKeySecretRef:
+      name: letsencrypt
+    solvers:
+    - selector:
+        dnsZones:
+          - "sheepieslab.com"
+      dns01:
+        route53:
+          region: us-east-1
+          accessKeyID: AKIAV3MAKUGDVJMPTK6E
+          secretAccessKeySecretRef:
+            name: route53-credentials-secret
+            key: secret-access-key
+

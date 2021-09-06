@@ -1,0 +1,25 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: cert-manager
+spec:
+  releaseName: cert-manager
+  chart:
+    spec:
+      chart: cert-manager
+      sourceRef:
+        kind: HelmRepository
+        name: jetstack
+        namespace: flux-system
+      version: "v1.5.0"
+  interval: 1h0m0s
+  install:
+    remediation:
+      retries: 10
+  # see https://github.com/jetstack/cert-manager/blob/master/deploy/charts/cert-manager/values.yaml
+  values:
+    installCRDs: true
+    extraArgs:
+      # see https://stackoverflow.com/a/66042994/855160
+      - --dns01-recursive-nameservers-only
+      - --dns01-recursive-nameservers=8.8.8.8:53,1.1.1.1:53
