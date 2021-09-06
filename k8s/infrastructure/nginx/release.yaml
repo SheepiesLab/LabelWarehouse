@@ -25,5 +25,5 @@ spec:
       enabled: true
     extraArgs:
       default-ssl-certificate: infrastructure/labelwarehouse-staging
-    #   configmap: infrastructure/nginx-configmap
-    # configMapNamespace: infrastructure
+      configmap: infrastructure/nginx-configmap
+    configMapNamespace: infrastructure
