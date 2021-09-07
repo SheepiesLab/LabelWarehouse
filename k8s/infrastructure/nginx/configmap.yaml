@@ -5,5 +5,5 @@ metadata:
 data:
   use-proxy-protocol: "true"
   use-forwarded-headers: "true"
-  proxy-buffers-number: 8
-  proxy-buffer-size: 256k
+  proxy-buffers-number: 12
+  proxy-buffer-size: 512k
