@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const LabelWarehouseObject = require('./lwobjects')
+var LabelWarehouseObject = require('./lwobjects')
 
 class Item extends LabelWarehouseObject {
     label;

@@ -8,4 +8,4 @@ class LabelWarehouseObject{
     remove(){};
 }
 
-export default LabelWarehouseObject;
+module.exports =  LabelWarehouseObject;
