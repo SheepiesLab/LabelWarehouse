@@ -18,10 +18,6 @@ router.get('/', function(req, res, next) {
   res.json(req.body);
 });
 
-router.get('/search', function(req, res, next) {
-  res.json(req.body);
-});
-
 router.post('/', function(req, res, next) {
   res.json(req.body);
 })

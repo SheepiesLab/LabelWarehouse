@@ -1,6 +1,6 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "$id": "https://api.staging.labelwarehouse.sheepieslab.com/user.schema.json",
+    "$id": "https://api.staging.labelwarehouse.sheepieslab.com/User.schema.json",
     "title": "User",
     "description": "An user registered in LabelWarehouse",
     "type": "object",

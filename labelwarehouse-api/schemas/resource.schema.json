@@ -1,6 +1,6 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "$id": "https://api.staging.labelwarehouse.sheepieslab.com/resource.schema.json",
+    "$id": "https://api.staging.labelwarehouse.sheepieslab.com/Resource.schema.json",
     "title": "Resource",
     "description": "An resource registered in LabelWarehouse",
     "type": "object",
