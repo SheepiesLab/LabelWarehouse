@@ -11,7 +11,7 @@ class Resource extends LabelWarehouseObject {
 
 }
 
-/* GET users listing. */
+/* GET resources listing. */
 router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
