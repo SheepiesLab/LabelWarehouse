@@ -5,6 +5,7 @@ var LabelWarehouseObject = require('./lwobjects')
 class Item extends LabelWarehouseObject {
     label;
     isReal;
+    quantity;
     inContainer;
     resources;
     constructor(){
@@ -13,7 +14,7 @@ class Item extends LabelWarehouseObject {
 
 }
 
-/* GET users listing. */
+/* GET items listing. */
 router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });

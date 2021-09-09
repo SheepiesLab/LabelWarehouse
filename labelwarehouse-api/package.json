@@ -1,10 +1,12 @@
 {
   "name": "labelwarehouse-api",
-  "version": "0.0.0.1",
+  "version": "0.0.0.2",
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "build": "docker buildx build --platform linux/amd64 --push -t registry.digitalocean.com/labelwarehouse/labelwarehouse-api:$npm_package_version ."
+    "docker-build-local": "docker buildx build --platform linux/amd64 --load -t labelwarehouse-api:latest .",
+    "docker-run-local": "docker run -ti --platform linux/amd64 -p 3000:3000 --rm labelwarehouse-api:latest",
+    "docker-build": "docker buildx build --platform linux/amd64 --push -t registry.digitalocean.com/labelwarehouse/labelwarehouse-api:$npm_package_version ."
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",

@@ -1,0 +1,37 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://api.staging.labelwarehouse.sheepieslab.com/resource.schema.json",
+    "title": "Resource",
+    "description": "An resource registered in LabelWarehouse",
+    "type": "object",
+    "properties": {
+      "id": {
+        "description": "The unique identifier for an resource",
+        "type": "string",
+        "format": "uuid"
+      },
+      "name": {
+        "description": "The name for an resource",
+        "type": "string"
+      },
+      "details": {
+        "description": "The description for an resource",
+        "type": "string"
+      },
+      "filePath": {
+        "description": "The file path for an resource",
+        "type": "string",
+        "format": "uri"
+      },
+      "mimeType": {
+        "description": "The MIME type for an resource",
+        "type": "string"
+      }
+    },
+    "required": [
+      "id",
+      "name",
+      "filePath",
+      "mimeType"
+    ]
+  }

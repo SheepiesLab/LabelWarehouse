@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.staging.labelwarehouse.sheepieslab.com/item.schema.json",
+  "title": "Item",
+  "description": "An item registered in LabelWarehouse",
+  "type": "object",
+  "properties": {
+    "id": {
+      "description": "The unique identifier for an item",
+      "type": "string",
+      "format": "uuid"
+    },
+    "name": {
+      "description": "The name for an item",
+      "type": "string"
+    },
+    "details": {
+      "description": "The description for an item",
+      "type": "string"
+    },
+    "label": {
+      "description": "The label for an item",
+      "type": "string"
+    },
+    "isReal": {
+      "description": "If the item really exists",
+      "type": "boolean"
+    },
+    "inContainer": {
+      "description": "The container item of the item",
+      "type": "string"
+    },
+    "resources": {
+      "description": "The media and resources for an item",
+      "type": "array",
+      "items": {
+        "description": "The id of the resource",
+        "type": "string"
+      },
+      "uniqueItems": true
+    }
+  },
+  "required": [
+    "id",
+    "name"
+  ]
+}
