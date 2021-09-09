@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "build": "docker buildx build --platform linux/amd64 --push -t registry.digitalocean.com/labelwarehouse/labelwarehouse-api:$npm_package_version ."
+    "docker-build-test": "docker buildx build --platform linux/amd64 --load -t labelwarehouse-api:test .",
+    "docker-run-test": "docker run -ti --platform linux/amd64 -p 3000:3000 --rm labelwarehouse-api:test",
+    "docker-build": "docker buildx build --platform linux/amd64 --push -t registry.digitalocean.com/labelwarehouse/labelwarehouse-api:$npm_package_version ."
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
