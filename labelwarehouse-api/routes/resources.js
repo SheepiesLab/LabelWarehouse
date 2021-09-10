@@ -30,7 +30,9 @@ router.get('/', function(req, res, next) {
       "details": resourcesGetRequestSchemaValidate.errors
     })
   }
-  res.json(req.body);
+  else {
+    res.json(req.body);
+  }
 });
 
 router.post('/', function(req, res, next) {
@@ -40,7 +42,9 @@ router.post('/', function(req, res, next) {
       "details": resourcePostRequestSchemaValidate.errors
     })
   }
-  res.json(req.body);
+  else {
+    res.json(req.body);
+  }
 })
 
 router.get('/:id', function(req, res, next) {
@@ -58,7 +62,9 @@ router.put('/:id', function(req, res, next) {
       "details": resourcePostRequestSchemaValidate.errors
     })
   }
-  res.json(req.body);
+  else {
+    res.json(req.body);
+  }
 });
 
 router.delete('/:id', function(req, res, next) {

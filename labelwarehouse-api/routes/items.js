@@ -12,41 +12,46 @@ const itemSchemaValidate = ajv.compile(itemSchema);
 const itemsGetRequestSchemaValidate = ajv.compile(itemsGetRequestSchema);
 const itemPostRequestSchemaValidate = ajv.compile(itemPostRequestSchema);
 
-var LabelWarehouseObject = require('./lwobjects')
+var LabelWarehouseObject = require('./lwobjects');
+const e = require('express');
 
 class Item extends LabelWarehouseObject {
-    label;
-    isReal;
-    quantity;
-    inContainer;
-    resources;
-    constructor(){
-        super();
-    }
+  label;
+  isReal;
+  quantity;
+  inContainer;
+  resources;
+  constructor() {
+    super();
+  }
 
 }
 
-router.get('/', function(req, res, next) {
-  if (!itemsGetRequestSchemaValidate(req.body)){
+router.get('/', function (req, res, next) {
+  if (!itemsGetRequestSchemaValidate(req.body)) {
     res.status(400).json({
       "error": "Request JSON invalid",
       "details": itemsGetRequestSchemaValidate.errors
-    })
+    });
   }
-  res.json(req.body);
+  else {
+    res.json(req.body);
+  }
 });
 
-router.post('/', function(req, res, next) {
-  if (!itemPostRequestSchemaValidate(req.body)){
+router.post('/', function (req, res, next) {
+  if (!itemPostRequestSchemaValidate(req.body)) {
     res.status(400).json({
       "error": "Request JSON invalid",
       "details": itemPostRequestSchemaValidate.errors
     })
   }
-  res.json(req.body);
+  else {
+    res.json(req.body);
+  }
 })
 
-router.get('/:id', function(req, res, next) {
+router.get('/:id', function (req, res, next) {
   id = req.params.id;
   res.json({
     "action": "get",
@@ -54,18 +59,20 @@ router.get('/:id', function(req, res, next) {
   });
 });
 
-router.put('/:id', function(req, res, next) {
+router.put('/:id', function (req, res, next) {
   id = req.params.id;
-  if (!itemPostRequestSchemaValidate(req.body)){
+  if (!itemPostRequestSchemaValidate(req.body)) {
     res.status(400).json({
       "error": "Request JSON invalid",
       "details": itemPostRequestSchemaValidate.errors
     })
   }
-  res.json(req.body);
+  else {
+    res.json(req.body);
+  }
 });
 
-router.delete('/:id', function(req, res, next) {
+router.delete('/:id', function (req, res, next) {
   id = req.params.id;
   res.json({
     "action": "delete",
