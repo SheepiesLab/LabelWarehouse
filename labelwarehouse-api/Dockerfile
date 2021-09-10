@@ -5,6 +5,7 @@ FROM node:16.3
 
 WORKDIR /usr/src/app
 
+RUN mkdir /data
 COPY ./ ./
 RUN npm install
 

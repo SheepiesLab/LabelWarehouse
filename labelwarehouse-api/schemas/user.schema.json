@@ -1,26 +1,24 @@
 {
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "$id": "https://api.staging.labelwarehouse.sheepieslab.com/user.schema.json",
-    "title": "User",
-    "description": "An user registered in LabelWarehouse",
-    "type": "object",
-    "properties": {
-      "id": {
-        "description": "The unique identifier for an user",
-        "type": "string",
-        "format": "uuid"
-      },
-      "name": {
-        "description": "The name for an user",
-        "type": "string"
-      },
-      "description": {
-        "description": "The description for an user",
-        "type": "string"
-      }
+  "$id": "https://api.staging.labelwarehouse.sheepieslab.com/User.schema.json",
+  "title": "User",
+  "description": "An user registered in LabelWarehouse",
+  "type": "object",
+  "properties": {
+    "id": {
+      "description": "The unique identifier for an user",
+      "type": "string"
     },
-    "required": [
-      "id",
-      "name"
-    ]
-  }
+    "name": {
+      "description": "The name for an user",
+      "type": "string"
+    },
+    "description": {
+      "description": "The description for an user",
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "name"
+  ]
+}

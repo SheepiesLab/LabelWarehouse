@@ -1,13 +1,9 @@
 {
-  "$id": "https://api.staging.labelwarehouse.sheepieslab.com/Item.schema.json",
+  "$id": "https://api.staging.labelwarehouse.sheepieslab.com/ItemPostRequest.schema.json",
   "title": "Item",
   "description": "An item registered in LabelWarehouse",
   "type": "object",
   "properties": {
-    "id": {
-      "description": "The unique identifier for an item",
-      "type": "string"
-    },
     "name": {
       "description": "The name for an item",
       "type": "string"
@@ -39,7 +35,6 @@
     }
   },
   "required": [
-    "id",
     "name"
   ]
 }

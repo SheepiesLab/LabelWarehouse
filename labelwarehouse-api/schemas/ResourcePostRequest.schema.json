@@ -1,13 +1,9 @@
 {
-  "$id": "https://api.staging.labelwarehouse.sheepieslab.com/Resource.schema.json",
+  "$id": "https://api.staging.labelwarehouse.sheepieslab.com/ResourcePostRequest.schema.json",
   "title": "Resource",
   "description": "An resource registered in LabelWarehouse",
   "type": "object",
   "properties": {
-    "id": {
-      "description": "The unique identifier for an resource",
-      "type": "string"
-    },
     "name": {
       "description": "The name for an resource",
       "type": "string"
@@ -26,7 +22,6 @@
     }
   },
   "required": [
-    "id",
     "name",
     "filePath",
     "mimeType"

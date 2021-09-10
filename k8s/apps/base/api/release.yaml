@@ -12,6 +12,20 @@ spec:
 
 ---
 
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: labelwarehouse-api-pvc
+spec:
+  storageClassName: do-block-storage
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+
+---
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -26,11 +40,18 @@ spec:
       labels:
         app: labelwarehouse-api
     spec:
+      volumes:
+      - name: labelwarehouse-api-storage
+        persistentVolumeClaim: 
+          claimName: labelwarehouse-api-pvc
       containers:
       - name: labelwarehouse-api
-        image: registry.digitalocean.com/labelwarehouse/labelwarehouse-api:0.0.0.2 # labelwarehouse-api-version
+        image: registry.digitalocean.com/labelwarehouse/labelwarehouse-api:0.0.0.3 # labelwarehouse-api-version
         ports:
         - containerPort: 3000
+        volumeMounts:
+        - mountPath: "/data"
+          name: labelwarehouse-api-storage
 
 ---
 

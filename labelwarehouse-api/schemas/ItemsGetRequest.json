@@ -1,0 +1,36 @@
+{
+  "$id": "https://api.staging.labelwarehouse.sheepieslab.com/ItemsGetRequest.schema.json",
+  "title": "ItemsGetRequest",
+  "description": "Specification of get request on items.",
+  "type": "object",
+  "properties": {
+    "from": {
+      "description": "Starting index of retrival, default 0.",
+      "type": "integer"
+    },
+    "count": {
+      "description": "Number of items to be retrieved, default 10.",
+      "type": "integer"
+    },
+    "id": {
+      "description": "The unique identifier for an item",
+      "type": "string"
+    },
+    "name": {
+      "description": "The name for an item",
+      "type": "string"
+    },
+    "label": {
+      "description": "The label for an item",
+      "type": "string"
+    },
+    "isReal": {
+      "description": "If the item really exists",
+      "type": "boolean"
+    },
+    "inContainer": {
+      "description": "The container item of the item",
+      "type": "string"
+    }
+  }
+}
