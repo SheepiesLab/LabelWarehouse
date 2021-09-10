@@ -9,10 +9,11 @@
     "docker-build": "docker buildx build --platform linux/amd64 --push -t registry.digitalocean.com/labelwarehouse/labelwarehouse-api:$npm_package_version ."
   },
   "dependencies": {
+    "ajv": "^8.6.2",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "~4.16.1",
-    "morgan": "~1.9.1",
-    "keycloak-connect": "15.0.2"
+    "keycloak-connect": "15.0.2",
+    "morgan": "~1.9.1"
   }
 }

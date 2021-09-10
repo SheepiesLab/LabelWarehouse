@@ -1,9 +1,17 @@
 {
-  "$id": "https://api.staging.labelwarehouse.sheepieslab.com/Resource.schema.json",
+  "$id": "https://api.staging.labelwarehouse.sheepieslab.com/ResourcesGetRequest.schema.json",
   "title": "Resource",
   "description": "An resource registered in LabelWarehouse",
   "type": "object",
   "properties": {
+    "from": {
+      "description": "Starting index of retrival, default 0.",
+      "type": "integer"
+    },
+    "count": {
+      "description": "Number of items to be retrieved, default 10.",
+      "type": "integer"
+    },
     "id": {
       "description": "The unique identifier for an resource",
       "type": "string"
@@ -15,20 +23,6 @@
     "details": {
       "description": "The description for an resource",
       "type": "string"
-    },
-    "filePath": {
-      "description": "The file path for an resource",
-      "type": "string"
-    },
-    "mimeType": {
-      "description": "The MIME type for an resource",
-      "type": "string"
     }
-  },
-  "required": [
-    "id",
-    "name",
-    "filePath",
-    "mimeType"
-  ]
+  }
 }

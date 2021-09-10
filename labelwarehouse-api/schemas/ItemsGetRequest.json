@@ -1,5 +1,4 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://api.staging.labelwarehouse.sheepieslab.com/ItemsGetRequest.schema.json",
   "title": "ItemsGetRequest",
   "description": "Specification of get request on items.",
@@ -9,9 +8,13 @@
       "description": "Starting index of retrival, default 0.",
       "type": "integer"
     },
-    "length": {
-      "description": "Length of retrival, default 10.",
+    "count": {
+      "description": "Number of items to be retrieved, default 10.",
       "type": "integer"
+    },
+    "id": {
+      "description": "The unique identifier for an item",
+      "type": "string"
     },
     "name": {
       "description": "The name for an item",
