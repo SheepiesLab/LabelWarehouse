@@ -7,12 +7,21 @@
     "extends": [
         "google"
     ],
+    "parser": "@babel/eslint-parser",
     "parserOptions": {
+        "babelOptions": {
+            "configFile": "./.babelrc"
+        },
         "ecmaVersion": 12
     },
     "rules": {
-        "new-cap": ["error", {
-            "capIsNewExceptions": ["Router"]
-        }]
+        "new-cap": [
+            "error",
+            {
+                "capIsNewExceptions": [
+                    "Router"
+                ]
+            }
+        ]
     }
 }
