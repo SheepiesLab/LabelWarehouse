@@ -1,4 +1,4 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
 
 router.get('/', function(req, res, next) {
@@ -10,18 +10,18 @@ router.post('/', function(req, res, next) {
 });
 
 router.get('/:id', function(req, res, next) {
-  id = req.params.id;
+  const id = req.params.id;
   res.json(req.body);
 });
 
 router.put('/:id', function(req, res, next) {
-  id = req.params.id;
+  const id = req.params.id;
   res.json(req.body);
 });
 
 router.delete('/:id', function(req, res, next) {
-  id = req.params.id;
+  const id = req.params.id;
   res.json(req.body);
 });
 
-module.exports = router;
+export default router;

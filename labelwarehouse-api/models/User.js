@@ -1,4 +1,4 @@
-const LabelWarehouseObject = require('./lwobjects');
+import LabelWarehouseObject from './lwobjects';
 
 /** */
 class User extends LabelWarehouseObject {
@@ -8,4 +8,4 @@ class User extends LabelWarehouseObject {
   }
 }
 
-module.exports = User;
+export default User;

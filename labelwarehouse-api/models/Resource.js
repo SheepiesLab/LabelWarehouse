@@ -1,4 +1,4 @@
-const LabelWarehouseObject = require('./lwobjects');
+import LabelWarehouseObject from './lwobjects';
 
 /** */
 class Resource extends LabelWarehouseObject {
@@ -8,4 +8,4 @@ class Resource extends LabelWarehouseObject {
   }
 }
 
-module.exports = Resource;
+export default Resource;

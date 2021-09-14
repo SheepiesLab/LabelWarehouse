@@ -1,4 +1,4 @@
-const {cleanEnv, str, num} = require('envalid');
+import {cleanEnv, str, num} from 'envalid';
 
 const env = cleanEnv(process.env, {
   DB_HOST: str({default: 'mongodb'}),
@@ -8,4 +8,4 @@ const env = cleanEnv(process.env, {
   DB_PASSWORD: str(),
 });
 
-module.exports = env;
+export default env;

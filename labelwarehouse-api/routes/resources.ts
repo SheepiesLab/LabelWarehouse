@@ -1,7 +1,7 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
 
-const Ajv = require('ajv');
+import Ajv from 'ajv';
 const ajv = new Ajv();
 
 const resourcesGetRequestSchema =
@@ -37,7 +37,7 @@ router.post('/', function(req, res, next) {
 });
 
 router.get('/:id', function(req, res, next) {
-  id = req.params.id;
+  const id = req.params.id;
   res.json({
     'action': 'get',
     'id': id,
@@ -56,11 +56,11 @@ router.put('/:id', function(req, res, next) {
 });
 
 router.delete('/:id', function(req, res, next) {
-  id = req.params.id;
+  const id = req.params.id;
   res.json({
     'action': 'delete',
     'id': id,
   });
 });
 
-module.exports = router;
+export default router;

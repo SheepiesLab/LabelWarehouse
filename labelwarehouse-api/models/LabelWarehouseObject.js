@@ -14,4 +14,4 @@ class LabelWarehouseObject {
   static search() { };
 }
 
-module.exports = LabelWarehouseObject;
+export default LabelWarehouseObject;

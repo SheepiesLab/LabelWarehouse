@@ -1,12 +1,12 @@
-const express = require('express');
-const path = require('path');
-const cookieParser = require('cookie-parser');
-const logger = require('morgan');
+import express from 'express';
+import path from 'path';
+import cookieParser from 'cookie-parser';
+import logger from 'morgan';
 
-const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
-const itemsRouter = require('./routes/items');
-const resourcesRouter = require('./routes/resources');
+import indexRouter from './routes/index';
+import usersRouter from './routes/users';
+import itemsRouter from './routes/items';
+import resourcesRouter from './routes/resources';
 
 const app = express();
 
@@ -22,4 +22,4 @@ app.use('/users', usersRouter);
 app.use('/items', itemsRouter);
 app.use('/resources', resourcesRouter);
 
-module.exports = app;
+export default app;
