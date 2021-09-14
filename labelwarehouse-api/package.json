@@ -15,5 +15,9 @@
     "express": "~4.16.1",
     "keycloak-connect": "15.0.2",
     "morgan": "~1.9.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-google": "^0.14.0"
   }
 }
