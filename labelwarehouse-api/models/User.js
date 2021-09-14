@@ -1,4 +1,3 @@
-
 const LabelWarehouseObject = require('./lwobjects');
 
 /** */

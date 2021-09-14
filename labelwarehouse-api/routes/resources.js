@@ -4,13 +4,11 @@ const router = express.Router();
 const Ajv = require('ajv');
 const ajv = new Ajv();
 
-// const resourceSchema = require('../schemas/Resource.schema.json');
 const resourcesGetRequestSchema =
   require('../schemas/ResourcesGetRequest.schema.json');
 const resourcePostRequestSchema =
   require('../schemas/ResourcePostRequest.schema.json');
 
-// const resourceSchemaValidate = ajv.compile(resourceSchema);
 const resourcesGetRequestSchemaValidate =
   ajv.compile(resourcesGetRequestSchema);
 const resourcePostRequestSchemaValidate =

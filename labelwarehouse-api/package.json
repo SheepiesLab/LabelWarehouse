@@ -12,8 +12,10 @@
     "ajv": "^8.6.2",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
+    "envalid": "^7.2.1",
     "express": "~4.16.1",
     "keycloak-connect": "15.0.2",
+    "mongodb": "^4.1.1",
     "morgan": "~1.9.1"
   },
   "devDependencies": {
