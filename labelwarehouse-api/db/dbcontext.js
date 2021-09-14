@@ -3,10 +3,11 @@ const MongoClient = require('mongodb').MongoClient;
 
 /** */
 class DBContext {
+  static uri = 'mongodb+srv://' + env.DB_USER + ':' + env.DB_PASSWORD +
+    '@' + env.DB_HOST + ':' + env.DB_PORT;
   /** */
   constructor() {
-    this.uri = 'mongodb+srv://' + env.DB_USER + ':' + env.DB_PASSWORD + '@' + env.DB_HOST + '?retryWrites=true&writeConcern=majority';
-    this.client = new MongoClient(uri);
+    this.client = new MongoClient(this.uri);
   };
 
   /** */
@@ -19,6 +20,21 @@ class DBContext {
   async disconnect() {
     await this.client.close();
   }
+
+  /**
+   * @param  {Function} func
+   * @return {Function}
+   */
+  withConnection(func) {
+    instance = this;
+    return async function(...args) {
+      await instance.connect();
+      ret = func(instance.client, ...args);
+      await instance.disconnect();
+    };
+  }
 }
 
-module.exports = DBContext;
+instance = new DBContext();
+
+module.exports = instance;

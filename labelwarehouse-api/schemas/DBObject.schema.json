@@ -1,0 +1,6 @@
+{
+  "$id": "https://api.staging.labelwarehouse.sheepieslab.com/DBObject.schema.json",
+  "title": "DBObject",
+  "description": "An object in the database",
+  "type": "object"
+}
