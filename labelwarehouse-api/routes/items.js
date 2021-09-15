@@ -1,18 +1,20 @@
-import express from 'express';
+const express = require('express');
 const router = express.Router();
 
-import dbcontext from '../db/dbcontext'
+const uuidv4 = require('uuid').v4;
 
-import Ajv from 'ajv';
+// const dbcontext = require('../db/dbcontext');
+
+const Ajv = require('ajv');
 const ajv = new Ajv();
 
-import itemsGetRequestSchema from '../schemas/ItemsGetRequest.schema.json';
-import itemPostRequestSchema from '../schemas/ItemPostRequest.schema.json';
+const itemsGetRequestSchema = require('../schemas/ItemsGetRequest.schema.json');
+const itemPostRequestSchema = require('../schemas/ItemPostRequest.schema.json');
 
 const itemsGetRequestSchemaValidate = ajv.compile(itemsGetRequestSchema);
 const itemPostRequestSchemaValidate = ajv.compile(itemPostRequestSchema);
 
-router.get('/', function (req, res, next) {
+router.get('/', function(req, res, next) {
   if (!itemsGetRequestSchemaValidate(req.body)) {
     res.status(400).json({
       'error': 'Request JSON invalid',
@@ -21,10 +23,9 @@ router.get('/', function (req, res, next) {
     return;
   }
   res.json(req.body);
-
 });
 
-router.post('/', function (req, res, next) {
+router.post('/', function(req, res, next) {
   if (!itemPostRequestSchemaValidate(req.body)) {
     res.status(400).json({
       'error': 'Request JSON invalid',
@@ -32,11 +33,14 @@ router.post('/', function (req, res, next) {
     });
     return;
   }
-  res.json(req.body);
 
+  const itemObject = req.body;
+  itemObject.id = uuidv4();
+
+  res.json(req.body);
 });
 
-router.get('/:id', function (req, res, next) {
+router.get('/:id', function(req, res, next) {
   const id = req.params.id;
   res.json({
     'action': 'get',
@@ -44,7 +48,7 @@ router.get('/:id', function (req, res, next) {
   });
 });
 
-router.put('/:id', function (req, res, next) {
+router.put('/:id', function(req, res, next) {
   const id = req.params.id;
   if (!itemPostRequestSchemaValidate(req.body)) {
     res.status(400).json({
@@ -53,11 +57,13 @@ router.put('/:id', function (req, res, next) {
     });
     return;
   }
-  res.json(req.body);
-
+  res.json({
+    'action': 'put',
+    'id': id,
+  });
 });
 
-router.delete('/:id', function (req, res, next) {
+router.delete('/:id', function(req, res, next) {
   const id = req.params.id;
   res.json({
     'action': 'delete',
@@ -65,4 +71,4 @@ router.delete('/:id', function (req, res, next) {
   });
 });
 
-export default router;
+module.exports = router;

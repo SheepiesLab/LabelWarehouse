@@ -1,12 +1,12 @@
-import env from '../utils/env';
+const env = require('../utils/env');
 import * as mongodb from 'mongodb';
 
 /** */
 class DBContext {
-  static uri: string = 'mongodb+srv://' + env.DB_USER + ':' + env.DB_PASSWORD +
+  static uri = 'mongodb://' + env.DB_USER + ':' + env.DB_PASSWORD +
     '@' + env.DB_HOST + ':' + env.DB_PORT;
-  client: mongodb.MongoClient;
-  db: mongodb.Db | null = null;
+  client;
+  db;
 
   /** */
   constructor() {
@@ -16,7 +16,7 @@ class DBContext {
   /**
    * @return {Promise<void>}
    */
-  async connect(): Promise<void> {
+  async connect() {
     await this.client.connect();
     this.db = this.client.db(env.DB_DATABASE);
   };
@@ -24,7 +24,7 @@ class DBContext {
   /**
    * @return {Promise<void>}
    */
-  async disconnect(): Promise<void> {
+  async disconnect() {
     await this.client.close();
   }
 
@@ -32,17 +32,27 @@ class DBContext {
    * @param  {(any[])} func
    * @return {(any[])}
    */
-  withConnection(func: (...args: any[]) => any): (...args: any[]) => Promise<any> {
-    let instance = this;
-    return async function (...args) {
+  withConnection(func) {
+    const instance = this;
+    return async function(...args) {
       await instance.connect();
-      let ret = func(...args);
+      const ret = func(...args);
       await instance.disconnect();
       return ret;
     };
   }
+
+  /** */
+  dbInitialize() {
+    instance.connect();
+    this.db.createCollection('items');
+    this.db.createCollection('resources');
+    this.db.listCollections();
+
+    instance.disconnect();
+  }
 }
 
-let instance = new DBContext();
+const instance = new DBContext();
 
-export default instance;
+module.exports = instance;

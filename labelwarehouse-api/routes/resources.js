@@ -1,11 +1,11 @@
-import express from 'express';
+const express = require('express');
 const router = express.Router();
 
-import Ajv from 'ajv';
+const Ajv = require('ajv');
 const ajv = new Ajv();
 
-import resourcesGetRequestSchema from '../schemas/ResourcesGetRequest.schema.json';
-import resourcePostRequestSchema from '../schemas/ResourcePostRequest.schema.json';
+const resourcesGetRequestSchema = require('../schemas/ResourcesGetRequest.schema.json');
+const resourcePostRequestSchema = require('../schemas/ResourcePostRequest.schema.json');
 
 const resourcesGetRequestSchemaValidate =
   ajv.compile(resourcesGetRequestSchema);
@@ -61,4 +61,4 @@ router.delete('/:id', function(req, res, next) {
   });
 });
 
-export default router;
+module.exports = router;

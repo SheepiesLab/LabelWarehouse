@@ -8,4 +8,4 @@ const env = cleanEnv(process.env, {
   DB_PASSWORD: str({default: 'labelwarehouse'}),
 });
 
-export default env;
+module.exports = env;

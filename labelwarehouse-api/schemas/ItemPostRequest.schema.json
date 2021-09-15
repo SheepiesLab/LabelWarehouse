@@ -4,6 +4,7 @@
   "description": "An item registered in LabelWarehouse",
   "type": "object",
   "properties": {
+    "id": false,
     "name": {
       "description": "The name for an item",
       "type": "string"
