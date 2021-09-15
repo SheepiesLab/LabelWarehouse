@@ -4,9 +4,9 @@
  * Module dependencies.
  */
 
-import app from '../dist/app';
+const app = require('../dist/app');
 const debug = require('debug')('labelwarehouse-api:server');
-import http from 'http';
+const http = require('http');
 
 /**
  * Get port from environment and store in Express.

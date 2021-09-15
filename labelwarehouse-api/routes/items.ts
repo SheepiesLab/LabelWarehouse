@@ -4,7 +4,7 @@ const router = express.Router();
 import Ajv from 'ajv';
 const ajv = new Ajv();
 
-import itemsGetRequestSchema from '../schemas/ItemsGetRequest.json';
+import itemsGetRequestSchema from '../schemas/ItemsGetRequest.schema.json';
 import itemPostRequestSchema from '../schemas/ItemPostRequest.schema.json';
 
 const itemsGetRequestSchemaValidate = ajv.compile(itemsGetRequestSchema);

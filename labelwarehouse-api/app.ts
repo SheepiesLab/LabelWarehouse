@@ -8,18 +8,17 @@ import usersRouter from './routes/users';
 import itemsRouter from './routes/items';
 import resourcesRouter from './routes/resources';
 
-const app = express();
+let app = express();
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'schemas')));
+app.use('/schemas', express.static(path.join(__dirname, 'schemas')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/items', itemsRouter);
 app.use('/resources', resourcesRouter);
 
-export default app;
+module.exports = app;

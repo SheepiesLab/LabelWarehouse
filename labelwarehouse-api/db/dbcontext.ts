@@ -13,9 +13,9 @@ class DBContext {
   };
 
   /**
-   * @return {mongodb.Db}
+   * @return {Promise<mongodb.Db>}
    */
-  async connect() {
+  async connect(): Promise<mongodb.Db> {
     await this.client.connect();
     return this.client.db(env.DB_DATABASE);
   };
