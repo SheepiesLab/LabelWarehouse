@@ -1,10 +1,11 @@
 const env = require('../utils/env');
-import * as mongodb from 'mongodb';
+const mongodb = require('mongodb');
 
 /** */
 class DBContext {
   static uri = 'mongodb://' + env.DB_USER + ':' + env.DB_PASSWORD +
-    '@' + env.DB_HOST + ':' + env.DB_PORT;
+    '@' + env.DB_HOST + ':' + env.DB_PORT + '/' + env.DB_DATABASE;
+  static requiredCollections = ['items', 'resources'];
   client;
   db;
 
@@ -43,13 +44,23 @@ class DBContext {
   }
 
   /** */
-  dbInitialize() {
-    instance.connect();
-    this.db.createCollection('items');
-    this.db.createCollection('resources');
-    this.db.listCollections();
-
-    instance.disconnect();
+  async dbInitialize() {
+    await instance.connect();
+    const requiredCollectionExists =
+      DBContext.requiredCollections.reduce((map, item) => {
+        map[item] = false;
+        return map;
+      }, {});
+    const collections = await this.db.listCollections().toArray();
+    collections.map((o) => {
+      requiredCollectionExists[o.name] = true;
+    });
+    for (const key in requiredCollectionExists) {
+      if (!requiredCollectionExists[key]) {
+        await this.db.createCollection(key);
+      }
+    }
+    await instance.disconnect();
   }
 }
 

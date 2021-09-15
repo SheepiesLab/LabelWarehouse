@@ -3,7 +3,7 @@ const router = express.Router();
 
 const uuidv4 = require('uuid').v4;
 
-// const dbcontext = require('../db/dbcontext');
+const dbcontext = require('../db/dbcontext');
 
 const Ajv = require('ajv');
 const ajv = new Ajv();
