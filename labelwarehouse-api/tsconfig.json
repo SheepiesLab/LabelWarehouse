@@ -9,15 +9,8 @@
   },
   "include": [
     "schemas/*",
-  ],
-  "files": [
-    "app.ts",
-    "utils/env.ts",
-    "routes/index.ts",
-    "routes/items.ts",
-    "routes/resources.ts",
-    "routes/users.ts",
-    "db/dbcontext.ts",
-    "db/dbobject.ts"
+    "utils/*",
+    "routes/*",
+    "db/*",
   ],
 }
