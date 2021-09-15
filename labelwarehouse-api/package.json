@@ -3,8 +3,6 @@
   "version": "0.0.0.4",
   "private": true,
   "scripts": {
-    "build": "tsc",
-    "ts-dev": "npm run build -- --watch",
     "start": "node ./bin/www",
     "docker-build-local": "docker buildx build --platform linux/amd64 --load -t labelwarehouse-api:latest .",
     "docker-run-local": "docker run -ti --platform linux/amd64 -p 3000:3000 --rm labelwarehouse-api:latest",
