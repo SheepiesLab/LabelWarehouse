@@ -1,66 +1,50 @@
 const env = require('../utils/env');
 const mongodb = require('mongodb');
 
-/** */
+/**
+ * @property {mongodb.MongoClient} client
+ * @property {Promise<any>} connection
+ * @property {mongodb.Db} db
+ * @property {mongodb.Collection} collection
+ */
 class DBContext {
   static uri = 'mongodb://' + env.DB_USER + ':' + env.DB_PASSWORD +
     '@' + env.DB_HOST + ':' + env.DB_PORT + '/' + env.DB_DATABASE;
-  static requiredCollections = ['items', 'resources'];
   client;
+  connection;
   db;
+  collection;
 
   /** */
   constructor() {
     this.client = new mongodb.MongoClient(DBContext.uri);
+    this.connection = this.client.connect();
   };
 
   /**
-   * @return {Promise<void>}
+   * @param {Function} func
+   * @param {string} collection
+   * @param {string} db
+   * @return {Function}
    */
-  async connect() {
-    await this.client.connect();
-    this.db = this.client.db(env.DB_DATABASE);
-  };
+  withConnection(func, collection, db=env.DB_DATABASE) {
+    const ins = this;
+    return async (...args) => {
+      await ins.connection;
+      ins.db = ins.client.db(db);
+      ins.collection = ins.db.collection(collection);
+      const ret = await func(...args);
+      ins.db = undefined;
+      ins.collection = undefined;
+      return ret;
+    };
+  }
 
   /**
    * @return {Promise<void>}
    */
   async disconnect() {
     await this.client.close();
-  }
-
-  /**
-   * @param  {(any[])} func
-   * @return {(any[])}
-   */
-  withConnection(func) {
-    const instance = this;
-    return async function(...args) {
-      await instance.connect();
-      const ret = func(...args);
-      await instance.disconnect();
-      return ret;
-    };
-  }
-
-  /** */
-  async dbInitialize() {
-    await instance.connect();
-    const requiredCollectionExists =
-      DBContext.requiredCollections.reduce((map, item) => {
-        map[item] = false;
-        return map;
-      }, {});
-    const collections = await this.db.listCollections().toArray();
-    collections.map((o) => {
-      requiredCollectionExists[o.name] = true;
-    });
-    for (const key in requiredCollectionExists) {
-      if (!requiredCollectionExists[key]) {
-        await this.db.createCollection(key);
-      }
-    }
-    await instance.disconnect();
   }
 }
 

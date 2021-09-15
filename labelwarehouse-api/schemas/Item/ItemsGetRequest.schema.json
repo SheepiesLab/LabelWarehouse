@@ -14,7 +14,8 @@
     },
     "id": {
       "description": "The unique identifier for an item",
-      "type": "string"
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
     },
     "name": {
       "description": "The name for an item",

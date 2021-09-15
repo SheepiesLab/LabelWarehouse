@@ -1,6 +1,6 @@
 {
-  "$id": "https://api.staging.labelwarehouse.sheepieslab.com/schema/Item/ItemPostRequest.schema.json",
-  "title": "Item",
+  "$id": "https://api.staging.labelwarehouse.sheepieslab.com/schema/Item/ItemPutRequest.schema.json",
+  "title": "ItemPutRequest",
   "description": "An item registered in LabelWarehouse",
   "type": "object",
   "properties": {
