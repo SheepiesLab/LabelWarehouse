@@ -8,8 +8,8 @@ const dbcontext = require('../db/dbcontext');
 const Ajv = require('ajv');
 const ajv = new Ajv();
 
-const itemsGetRequestSchema = require('../schemas/ItemsGetRequest.schema.json');
-const itemPostRequestSchema = require('../schemas/ItemPostRequest.schema.json');
+const itemsGetRequestSchema = require('../schemas/Item/ItemsGetRequest.schema.json');
+const itemPostRequestSchema = require('../schemas/Item/ItemPostRequest.schema.json');
 
 const itemsGetRequestSchemaValidate = ajv.compile(itemsGetRequestSchema);
 const itemPostRequestSchemaValidate = ajv.compile(itemPostRequestSchema);

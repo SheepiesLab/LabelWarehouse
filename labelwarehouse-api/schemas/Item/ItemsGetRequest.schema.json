@@ -1,5 +1,5 @@
 {
-  "$id": "https://api.staging.labelwarehouse.sheepieslab.com/ItemsGetRequest.schema.json",
+  "$id": "https://api.staging.labelwarehouse.sheepieslab.com/schema/Item/ItemsGetRequest.schema.json",
   "title": "ItemsGetRequest",
   "description": "Specification of get request on items.",
   "type": "object",
