@@ -6,6 +6,7 @@ class DBContext {
   static uri: string = 'mongodb+srv://' + env.DB_USER + ':' + env.DB_PASSWORD +
     '@' + env.DB_HOST + ':' + env.DB_PORT;
   client: mongodb.MongoClient;
+  db: mongodb.Db | null = null;
 
   /** */
   constructor() {
@@ -13,15 +14,17 @@ class DBContext {
   };
 
   /**
-   * @return {Promise<mongodb.Db>}
+   * @return {Promise<void>}
    */
-  async connect(): Promise<mongodb.Db> {
+  async connect(): Promise<void> {
     await this.client.connect();
-    return this.client.db(env.DB_DATABASE);
+    this.db = this.client.db(env.DB_DATABASE);
   };
 
-  /** */
-  async disconnect() {
+  /**
+   * @return {Promise<void>}
+   */
+  async disconnect(): Promise<void> {
     await this.client.close();
   }
 

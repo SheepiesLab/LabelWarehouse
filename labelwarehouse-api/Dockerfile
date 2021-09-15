@@ -7,6 +7,6 @@ WORKDIR /usr/src/app
 
 RUN mkdir /data
 COPY ./ ./
-RUN npm install
+RUN npm install && npm run build
 
 CMD [ "npm", "run", "start"]
