@@ -52,6 +52,9 @@ spec:
         volumeMounts:
         - mountPath: "/data"
           name: labelwarehouse-api-storage
+        env:
+        - name: DB_HOST
+          value: "mongodb.svc.cluster.local"
 
 ---
 
