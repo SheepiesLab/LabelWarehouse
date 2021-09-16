@@ -1,7 +1,7 @@
 const {cleanEnv, str, num} = require('envalid');
 
 const env = cleanEnv(process.env, {
-  DB_HOST: str({default: 'mongodb'}),
+  DB_HOST: str({default: 'mongodb.svc.cluster.local'}),
   DB_PORT: num({default: 27017}),
   DB_DATABASE: str({default: 'labelwarehouse'}),
   DB_USER: str({default: 'labelwarehouse'}),
