@@ -1,12 +1,13 @@
 {
-  "$id": "https://api.staging.labelwarehouse.sheepieslab.com/Item.schema.json",
+  "$id": "https://api.staging.labelwarehouse.sheepieslab.com/schema/Item/Item.schema.json",
   "title": "Item",
   "description": "An item registered in LabelWarehouse",
   "type": "object",
   "properties": {
     "id": {
       "description": "The unique identifier for an item",
-      "type": "string"
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
     },
     "name": {
       "description": "The name for an item",
@@ -26,14 +27,16 @@
     },
     "inContainer": {
       "description": "The container item of the item",
-      "type": "string"
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
     },
     "resources": {
       "description": "The media and resources for an item",
       "type": "array",
       "items": {
         "description": "The id of the resource",
-        "type": "string"
+        "type": "string",
+        "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
       },
       "uniqueItems": true
     }

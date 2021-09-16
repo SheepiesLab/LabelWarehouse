@@ -1,14 +1,5 @@
-var express = require('express');
-var router = express.Router();
-var LabelWarehouseObject = require('./lwobjects')
-
-class User extends LabelWarehouseObject {
-    email;
-    group;
-    constructor(){
-        super();
-    }
-}
+const express = require('express');
+const router = express.Router();
 
 router.get('/', function(req, res, next) {
   res.json(req.body);
@@ -16,21 +7,30 @@ router.get('/', function(req, res, next) {
 
 router.post('/', function(req, res, next) {
   res.json(req.body);
-})
+});
 
 router.get('/:id', function(req, res, next) {
-  id = req.params.id;
-  res.json(req.body);
+  const id = req.params.id;
+  res.json({
+    'action': 'get',
+    'id': id,
+  });
 });
 
 router.put('/:id', function(req, res, next) {
-  id = req.params.id;
-  res.json(req.body);
+  const id = req.params.id;
+  res.json({
+    'action': 'put',
+    'id': id,
+  });
 });
 
 router.delete('/:id', function(req, res, next) {
-  id = req.params.id;
-  res.json(req.body);
+  const id = req.params.id;
+  res.json({
+    'action': 'delete',
+    'id': id,
+  });
 });
 
 module.exports = router;

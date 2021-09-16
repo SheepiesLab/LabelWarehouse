@@ -1,20 +1,24 @@
 {
-  "$id": "https://api.staging.labelwarehouse.sheepieslab.com/ItemPostRequest.schema.json",
+  "$id": "https://api.staging.labelwarehouse.sheepieslab.com/schema/Item/ItemPostRequest.schema.json",
   "title": "Item",
   "description": "An item registered in LabelWarehouse",
   "type": "object",
   "properties": {
+    "id": false,
     "name": {
       "description": "The name for an item",
-      "type": "string"
+      "type": "string",
+      "maxLength": 256
     },
     "details": {
       "description": "The description for an item",
-      "type": "string"
+      "type": "string",
+      "maxLength": 2048
     },
     "label": {
       "description": "The label for an item",
-      "type": "string"
+      "type": "string",
+      "maxLength": 32
     },
     "isReal": {
       "description": "If the item really exists",
@@ -22,19 +26,13 @@
     },
     "inContainer": {
       "description": "The container item of the item",
-      "type": "string"
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
     },
-    "resources": {
-      "description": "The media and resources for an item",
-      "type": "array",
-      "items": {
-        "description": "The id of the resource",
-        "type": "string"
-      },
-      "uniqueItems": true
-    }
+    "resources": false
   },
   "required": [
     "name"
-  ]
+  ],
+  "additionalProperties": false
 }

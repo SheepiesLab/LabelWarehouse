@@ -1,5 +1,5 @@
 {
-  "$id": "https://api.staging.labelwarehouse.sheepieslab.com/ItemsGetRequest.schema.json",
+  "$id": "https://api.staging.labelwarehouse.sheepieslab.com/schema/Item/ItemsGetRequest.schema.json",
   "title": "ItemsGetRequest",
   "description": "Specification of get request on items.",
   "type": "object",
@@ -14,7 +14,8 @@
     },
     "id": {
       "description": "The unique identifier for an item",
-      "type": "string"
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
     },
     "name": {
       "description": "The name for an item",

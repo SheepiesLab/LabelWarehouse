@@ -1,6 +1,6 @@
 {
   "name": "labelwarehouse-api",
-  "version": "0.0.0.3",
+  "version": "0.0.0.4",
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
@@ -12,8 +12,18 @@
     "ajv": "^8.6.2",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
+    "envalid": "^7.2.1",
     "express": "~4.16.1",
     "keycloak-connect": "15.0.2",
-    "morgan": "~1.9.1"
+    "mongodb": "^4.1.1",
+    "morgan": "~1.9.1",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@babel/eslint-parser": "^7.15.4",
+    "@babel/plugin-syntax-class-properties": "^7.12.13",
+    "@babel/preset-env": "^7.15.6",
+    "eslint": "^7.32.0",
+    "eslint-config-google": "^0.14.0"
   }
 }

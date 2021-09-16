@@ -46,7 +46,7 @@ spec:
           claimName: labelwarehouse-api-pvc
       containers:
       - name: labelwarehouse-api
-        image: registry.digitalocean.com/labelwarehouse/labelwarehouse-api:0.0.0.3 # labelwarehouse-api-version
+        image: registry.digitalocean.com/labelwarehouse/labelwarehouse-api:0.0.0.4 # labelwarehouse-api-version
         ports:
         - containerPort: 3000
         volumeMounts:
