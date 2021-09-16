@@ -84,7 +84,7 @@ router.get('/:id',
     },
     errorHandlingMiddleware);
 
-const updatePostItem = dbcontext.withConnection(async (id, o) => {
+const updateItemById = dbcontext.withConnection(async (id, o) => {
   return await dbcontext.collection.findOneAndUpdate({id: id}, {'$set': o});
 }, 'items');
 
@@ -94,7 +94,7 @@ router.put('/:id',
     async function(req, res, next) {
       try {
         const itemObject = req.body;
-        await updatePostItem(req.params.id, itemObject);
+        await updateItemById(req.params.id, itemObject);
         res.json(itemObject);
       } catch (e) {
         console.log(e);
@@ -106,11 +106,7 @@ router.put('/:id',
 router.delete('/:id',
     uuidValidationMiddleware,
     function(req, res, next) {
-      const id = req.params.id;
-      res.json({
-        'action': 'delete',
-        'id': id,
-      });
+      next('Not Implemented');
     },
     errorHandlingMiddleware);
 
