@@ -54,7 +54,7 @@ spec:
           name: labelwarehouse-api-storage
         env:
         - name: DB_HOST
-          value: "mongodb.svc.cluster.local"
+          value: "mongodb.infrastructure.svc.cluster.local"
 
 ---
 
